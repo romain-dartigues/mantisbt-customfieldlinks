@@ -1,0 +1,13 @@
+<?php
+# vim:set ft=php:
+
+$s_plugin_CustomFieldsLinks_name = 'Custom fields';
+$s_plugin_CustomFieldsLinks_description = 'Generate links in custom fields';
+$s_plugin_CustomFieldsLinks_separator = 'Separator';
+$s_plugin_CustomFieldsLinks_separator_help = 'String used to separate generated links (default: "<samp>%s</samp>").';
+
+$s_plugin_CustomFieldsLinks_fields = 'Fields';
+$s_plugin_CustomFieldsLinks_fields_help = 'One per line with the format: <samp><var><a href="%s">Custom_field_name</a></var> = <var><a href="%s">formatted URL</a></var>.';
+$s_plugin_CustomFieldsLinks_invalid_format = 'Invalid format';
+
+?>
