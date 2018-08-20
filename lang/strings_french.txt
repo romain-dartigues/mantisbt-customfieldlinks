@@ -1,0 +1,13 @@
+<?php
+# vim:set ft=php fileencoding=utf8:
+
+$s_plugin_CustomFieldsLinks_name = 'Liens pour champs personnalisés';
+$s_plugin_CustomFieldsLinks_description = 'Génère des liens personalisés pour des champs personnalisés';
+$s_plugin_CustomFieldsLinks_separator = 'Séparateur';
+$s_plugin_CustomFieldsLinks_separator_help = 'Chaîne utilisée afin de séparer les liens (par défaut&nbsp;: "<samp>%s</samp>").';
+
+$s_plugin_CustomFieldsLinks_fields = 'Configuration des liens';
+$s_plugin_CustomFieldsLinks_fields_help = 'Une directive de configuration par ligne au format&nbsp;: <samp><var><a href="%s">nom_du_champ_personnalisé</a></var> = <var><a href="%s">URL</a></var>.';
+$s_plugin_CustomFieldsLinks_invalid_format = 'Format invalide';
+
+?>
