@@ -76,7 +76,7 @@ class CustomFieldsLinksPlugin extends MantisPlugin {
 		$t_url_format = '%s';
 
 		// find if we are called by the custom field API
-		foreach(debug_backtrace() as $t_row)
+		foreach (debug_backtrace() as $t_row)
 		{
 			if ($t_row['function'] == 'string_custom_field_value')
 			{
@@ -112,7 +112,7 @@ class CustomFieldsLinksPlugin extends MantisPlugin {
 			$t_url_format =&$this->fields[ $t_args['name'] ];
 		}
 
-		foreach($t_data[0] as $t_val)
+		foreach ($t_data[0] as $t_val)
 		{
 			$t_return[] = sprintf(
 				'<a href="' . $t_url_format .'">%s</a>',
