@@ -6,6 +6,7 @@ access_ensure_global_level( config_get( 'manage_plugin_threshold' ) );
  * Form handling
  */
 $t_errors = array();
+define('CSRF_NAME', 'plugin_CustomFieldsLinks_config');
 
 
 /**
@@ -28,6 +29,7 @@ function workaround_plugin_config_set($p_option, $p_value)
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
+	form_security_validate(CSRF_NAME);
 	$t_fields = gpc_get_string('fields', NULL);
 	if (!CustomFieldsLinksPlugin::parse_fields($t_fields))
 	{
@@ -47,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 			'fields',
 			$t_fields
 		);
+		form_security_purge(CSRF_NAME);
 		header('Location: ' . plugin_page( 'config',TRUE ));
 		print_successful_redirect( plugin_page( 'config',TRUE ) );
 	}
@@ -59,7 +62,6 @@ print_manage_menu();
 ?>
 
 <form action="<?php echo plugin_page( 'config' ) ?>" method="post">
-
 <div class="form-group">
  <label for="separator"><?php echo lang_get( 'plugin_CustomFieldsLinks_separator' ); ?></label>
  <input type="text" name="separator" id="separator" value="<?php echo htmlspecialchars(plugin_config_get( 'separator' ));?>">
@@ -83,6 +85,7 @@ print_manage_menu();
 </div>
 
 <div class="form-group">
+ <?php echo form_security_field(CSRF_NAME); ?>
  <input type="submit" class="button" value="<?php echo lang_get( 'plugin_update' ) ?>">
 </div>
 
