@@ -46,8 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$t_fields
 		);
 		form_security_purge(CSRF_NAME);
-		header('Location: ' . plugin_page( 'config',TRUE ));
-		print_successful_redirect( plugin_page( 'config',TRUE ) );
+		header('Location: ' . plugin_page( 'config', TRUE ));
+		print_successful_redirect( plugin_page( 'config', TRUE ) );
 	}
 }
 
