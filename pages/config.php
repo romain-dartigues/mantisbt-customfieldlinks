@@ -77,7 +77,9 @@ print_manage_menu();
   ); ?>
  </small><br><?php if (in_array('fields', $t_errors)):?>
  <span class="help-block"><?php echo lang_get( 'plugin_CustomFieldsLinks_invalid_format' ); ?></span><br><?php endif; ?>
- <textarea name="fields" id="fields" placeholder="FieldName = https://mantisbt.example.net/view.php?id=%d" cols="80" rows="5" maxlength=""><?php echo htmlspecialchars(plugin_config_get( 'fields' )); ?></textarea>
+ <textarea name="fields" id="fields" placeholder="FieldName = https://mantisbt.example.net/view.php?id=%d" cols="80" rows="5" maxlength=""><?php
+echo htmlspecialchars(plugin_config_get( 'fields' ));
+?></textarea>
 </div>
 
 <div class="form-group">
