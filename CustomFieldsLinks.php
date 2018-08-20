@@ -15,8 +15,7 @@ class CustomFieldsLinksPlugin extends MantisPlugin {
 	 * A method that populates the plugin information and minimum requirements.
 	 * @return void
 	 */
-	function register()
-	{
+	function register() {
 		$this->name = lang_get('plugin_CustomFieldsLinks_name');
 		$this->description = lang_get('plugin_CustomFieldsLinks_description');
 		$this->page = 'config';
@@ -36,24 +35,21 @@ class CustomFieldsLinksPlugin extends MantisPlugin {
 	 * Default plugin configuration.
 	 * @return array
 	 */
-	function config()
-	{
+	function config() {
 		return array(
 			'separator' => self::SEPARATOR,
 			'fields' => NULL,
 		);
 	}
 
-	function hooks()
-	{
+	function hooks() {
 		return array(
 			'EVENT_DISPLAY_FORMATTED' => 'display_formatted',
 			'EVENT_PLUGIN_INIT' => 'get_configuration',
 		);
 	}
 
-	function get_configuration()
-	{
+	function get_configuration() {
 		$this->fields = self::parse_fields(
 			plugin_config_get('fields')
 		);
@@ -68,8 +64,7 @@ class CustomFieldsLinksPlugin extends MantisPlugin {
 	 * @print Formatted text
 	 * @return NULL
 	 */
-	function display_formatted($p_event, $p_chained_param)
-	{
+	function display_formatted($p_event, $p_chained_param) {
 		$t_args = NULL;
 		$t_data = array();
 		$t_return = array();
@@ -78,8 +73,7 @@ class CustomFieldsLinksPlugin extends MantisPlugin {
 		// find if we are called by the custom field API
 		foreach (debug_backtrace() as $t_row)
 		{
-			if ($t_row['function'] == 'string_custom_field_value')
-			{
+			if ($t_row['function'] == 'string_custom_field_value') {
 				$t_args = $t_row['args'][0];
 				break;
 			}
@@ -101,19 +95,16 @@ class CustomFieldsLinksPlugin extends MantisPlugin {
 					$t_data
 				)
 			)
-		)
-		{
+		) {
 			return $p_chained_param;
 		}
 
 		// generate the links
-		if (!empty($this->fields[ $t_args['name'] ]))
-		{
+		if (!empty($this->fields[ $t_args['name'] ])) {
 			$t_url_format =&$this->fields[ $t_args['name'] ];
 		}
 
-		foreach ($t_data[0] as $t_val)
-		{
+		foreach ($t_data[0] as $t_val) {
 			$t_return[] = sprintf(
 				'<a href="' . $t_url_format .'">%s</a>',
 				urlencode($t_val),
@@ -138,11 +129,9 @@ class CustomFieldsLinksPlugin extends MantisPlugin {
 	 * @param string $input
 	 * @return array or FALSE
 	 */
-	function parse_fields($input)
-	{
+	function parse_fields($input) {
 		$data = array();
-		if (preg_match_all(self::R_FIELD, $input, $data))
-		{
+		if (preg_match_all(self::R_FIELD, $input, $data)) {
 			return array_combine($data[1], $data[2]);
 		}
 		return FALSE;

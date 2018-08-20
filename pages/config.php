@@ -19,25 +19,21 @@ define('CSRF_NAME', 'plugin_CustomFieldsLinks_config');
  * @see plugin_config_set()
  * @return void
  */
-function workaround_plugin_config_set($p_option, $p_value)
-{
+function workaround_plugin_config_set($p_option, $p_value) {
 	return plugin_config_set(
 		$p_option,
 		str_replace( '%', '\\%', $p_value )
 	);
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST')
-{
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	form_security_validate(CSRF_NAME);
 	$t_fields = gpc_get_string('fields', NULL);
-	if (!CustomFieldsLinksPlugin::parse_fields($t_fields))
-	{
+	if (!CustomFieldsLinksPlugin::parse_fields($t_fields)) {
 		$t_errors[] = 'fields';
 	}
 
-	if (empty($t_errors))
-	{
+	if (empty($t_errors)) {
 		workaround_plugin_config_set(
 			'separator',
 			gpc_get_string(
