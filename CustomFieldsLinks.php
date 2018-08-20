@@ -98,7 +98,7 @@ class CustomFieldsLinksPlugin extends MantisPlugin {
 				preg_match_all(
 					"/${t_args['valid_regexp']}/",
 					$p_chained_param,
-					&$t_data
+					$t_data
 				)
 			)
 		)
